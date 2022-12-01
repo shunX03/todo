@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TodoFormController@index');
+Route::get('/create-page', 'TodoFormController@createPage');
+Route::post('/create', 'TodoFormController@create');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
