@@ -10,9 +10,6 @@
             タスクの説明：<input type="text" name="task_description">
         </p>
         <p>
-            担当者の名前：<input type="text" name="assign_person_name">
-        </p>
-        <p>
             見積時間(h)：<input type="number" name="estimate_hour">
         </p>
         <input type="submit" name="create" value="追加">

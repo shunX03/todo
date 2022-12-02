@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller; 
 use Illuminate\Http\Request;
+use App\Todo; 
 
 class TodoFormController extends Controller
 {
@@ -10,7 +12,7 @@ class TodoFormController extends Controller
          public function index()
      {
          $todos = Todo::orderBy('id', 'asc')->get();
-         return view('todo_list', [
+         return view('todo', [
              "todos" => $todos
          ]);
      }
@@ -25,7 +27,6 @@ class TodoFormController extends Controller
          $todo = new Todo();
          $todo->task_name = $request->task_name;
          $todo->task_description = $request->task_description;
-         $todo->assign_person_name = $request->assign_person_name;
          $todo->estimate_hour = $request->estimate_hour;
          $todo->save();
 
