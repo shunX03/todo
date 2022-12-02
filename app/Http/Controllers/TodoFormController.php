@@ -32,4 +32,36 @@ class TodoFormController extends Controller
 
          return redirect('/');
      }
+     
+         public function editPage($id)
+     {
+         $todo = Todo::find($id);
+         return view('todo_edit', [
+            "todo" => $todo
+         ]);
+     }
+     
+         public function edit(Request $request)
+     {
+          Todo::find($request->id)->update([
+           'task_name' => $request->task_name,
+           'task_description' => $request->task_description,
+           'estimate_hour' => $request->estimate_hour
+           ]);
+         return redirect('/');
+     }
+     
+         public function deletePage($id)
+     {
+         $todo = Todo::find($id);
+         return view('todo_delete', [
+            "todo" => $todo
+         ]);
+     }
+     
+         public function delete(Request $id)
+     {
+         Todo::find($id)->delete();
+         return redirect('/');
+     }
 }

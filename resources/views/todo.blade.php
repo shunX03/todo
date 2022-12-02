@@ -6,8 +6,8 @@
         <tr>
             <th>タスクの名前</th>
             <th>タスクの説明</th>
-            <th>見積時間(h)</th>
-            <th colspan="2">操作</th>
+            <th>作業時間(h)</th>
+            <th colspan="2"></th>
         </tr>
         @foreach($todos as $todo)
         <tr>
