@@ -28,7 +28,6 @@ class TodoFormController extends Controller
          $todo->task_name = $request->task_name;
          $todo->task_description = $request->task_description;
          $todo->estimate_hour = $request->estimate_hour;
-         $posts->user_id = Auth::id();
          $todo->save();
 
          return redirect('/');
@@ -49,20 +48,6 @@ class TodoFormController extends Controller
            'task_description' => $request->task_description,
            'estimate_hour' => $request->estimate_hour
            ]);
-         return redirect('/');
-     }
-     
-         public function deletePage($id)
-     {
-         $todo = Todo::find($id);
-         return view('todo_delete', [
-            "todo" => $todo
-         ]);
-     }
-     
-         public function delete(Request $id)
-     {
-         Todo::find($id)->delete();
          return redirect('/');
      }
 }
