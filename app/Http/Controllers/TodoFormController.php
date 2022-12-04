@@ -8,13 +8,22 @@ use App\Todo;
 
 class TodoFormController extends Controller
 {
-    //
-         public function index()
+         public function index(Request $request)
      {
-         $todos = Todo::get();
-         return view('todo', [
-             "todos" => $todos
-         ]);
+         $keyword = $request->input('keyword');
+
+    $query = Todo::query();
+
+    if(!empty($keyword))
+    {
+        $query->where('task_name','like',"%{$keyword}%");
+        $query->orWhere('task_description','like',"%{$keyword}%");
+    }
+    
+    
+        $todos = $query->get();
+          return view('todo', compact('todos', 'keyword'));
+         
      }
      
          public function createPage()
@@ -50,4 +59,12 @@ class TodoFormController extends Controller
            ]);
          return redirect('/');
      }
+     
+     public function delete($id)
+{
+    $todo = \App\Todo::find($id);
+    $todo->delete();
+    return redirect()->to('/');
+}
+
 }

@@ -1,10 +1,14 @@
 @extends('layouts.app')
 @section('content')
-  <div>
+  <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">Edit</div>
     <form method="POST" action="/edit">
     @csrf
     <input type="hidden" name="id" value="{{$todo->id}}">
-    <div class="form-group">
+    <div class="form-group mt-3">
       ToDo name
       <div class="col-sm-6">
         <input type="text" name="task_name" value="{{$todo->task_name}}" class="form-control">
@@ -28,6 +32,9 @@
         </div>
       </div>
       </form>
+    </div>
+    </div>
+    </div>
     </div>
     
 @endsection
